@@ -7,7 +7,9 @@ export default function Home() {
 
   return (
     <>
-      <div className={`bg-red-300 text-white ${inter.className}`}>Hola</div>
+      <div className={`bg-green-500 text-primary-blue  ${inter.className}`}>
+        Hola
+      </div>
     </>
   );
 }
