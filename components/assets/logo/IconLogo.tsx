@@ -1,6 +1,6 @@
 interface ILogo extends React.ComponentPropsWithoutRef<'svg'> {}
 
-export function Logo({ ...svgProps }) {
+export function Logo({ ...svgProps }): ILogo {
   return (
     <svg
       width="62"
