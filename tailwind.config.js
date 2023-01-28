@@ -14,7 +14,22 @@ module.exports = {
     },
     extend: {
       colors: {
-        'primary-blue': '#1b4db1',
+        'app-blue': '#1b4db1',
+        'app-yellow': '#f3f243',
+        'app-pink': '#ff64bc',
+        'app-blacklight': '#1a1e2e',
+        'app-grayDark': '#636a6c',
+        'app-gray': '#a7a6a7',
+        'app-grayLight': '#d9d9d9',
+        'app-grayLighter': '#f8f7fa',
+        'app-red': '#ef3f47',
+      },
+      fontFamily: {
+        Roboto: ['Roboto', 'sans-serif'],
+      },
+
+      boxShadow: {
+        'app-card': '0px 2px 4px rgba(0, 0, 0, 0.25)',
       },
     },
   },
