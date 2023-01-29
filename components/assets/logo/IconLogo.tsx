@@ -1,6 +1,8 @@
-interface ILogo extends React.ComponentPropsWithoutRef<'svg'> {}
+import { FC } from 'react';
 
-export function Logo({ ...svgProps }): ILogo {
+interface IIconLogo extends React.ComponentPropsWithoutRef<'svg'> {}
+
+export const IconLogo: FC<IIconLogo> = ({ ...svgProps }) => {
   return (
     <svg
       width="62"
@@ -35,4 +37,4 @@ export function Logo({ ...svgProps }): ILogo {
       </defs>
     </svg>
   );
-}
+};

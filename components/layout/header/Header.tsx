@@ -1,13 +1,13 @@
 import Link from 'next/link';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { TbUserCircle } from 'react-icons/tb';
-import { Logo } from '../../assets/logo/IconLogo';
+import { IconLogo } from '../../assets/logo/IconLogo';
 
 const Header = () => {
   return (
     <div className="bg-black text-white flex items-center justify-between px-4 sm:px-12 py-4 min-h-[70px] text-sm">
       <div>
-        <Logo />
+        <IconLogo />
       </div>
       <div className="block sm:hidden">
         <div className="flex items-center gap-2 text-xs">
