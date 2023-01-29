@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Logo from '../components/assets/logo/Logo';
 import Button from '../components/buttons/Button';
 import { MessageCard } from '../components/cards/message-card/MessageCard';
@@ -21,9 +22,15 @@ const Home: NextPageWithLayout = () => {
             placeholder="¿Qué quieres ver en tu ciudad?"
           />
           <div className="flex items-center justify-center gap-2">
-            <Button>Marcas y tiendas</Button>
-            <Button>Artistas y conciertos</Button>
-            <Button>Torneos</Button>
+            <Link href={'/category/marcas-y-tiendas'}>
+              <Button>Marcas y tiendas</Button>
+            </Link>
+            <Link href={'/category/marcas-y-tiendas'}>
+              <Button>Artistas y conciertos</Button>
+            </Link>
+            <Link href={'/category/marcas-y-tiendas'}>
+              <Button>Torneos</Button>
+            </Link>
           </div>
         </div>
       </div>

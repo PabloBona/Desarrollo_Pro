@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { FC, useState } from 'react';
 import { BiUser } from 'react-icons/bi';
 import { Heart } from '../../assets/svg/Heart';
@@ -32,7 +33,9 @@ export const EventCard: FC<IEventCard> = ({
       </div>
       <div className="px-6 py-4 flex flex-col gap-4 relative">
         <div>
-          <h3 className="app-title-3 pb-2 truncate">{title}</h3>
+          <Link href={'/event/lady-gaga-concierto'}>
+            <h3 className="app-title-3 pb-2 truncate">{title}</h3>
+          </Link>
           <div className="relative  max-h-[60px] min-h-[60px] overflow-hidden">
             <p className="app-text-1 z-0">{short_description}</p>
             <p className="block absolute z-10 w-full h-full top-0 right-0 text-gradient"></p>
