@@ -19,6 +19,7 @@
       {
         "allowSingleExtends": true
       }
-    ]
+    ],
+    "react/prop-types": ["off"]
   }
 }

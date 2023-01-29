@@ -1,15 +1,31 @@
+import { Controller, useForm } from 'react-hook-form';
+import { ActionButton } from '../../components/buttons/ActionButton';
+import { Input } from '../../components/forms/Input';
+
 const CreateEventPage = () => {
+  const { handleSubmit, control } = useForm({
+    defaultValues: {
+      first_name: '',
+    },
+  });
+  const onSubmit = (data: { first_name: string }) => {
+    console.log(data);
+  };
+
   return (
     <div className="py-12">
-      <label className="relative">
-        <input
-          className="peer px-5 py-3 border border-app-grayDark rounded-3xl outline-none focus:border-app-blue w-full"
-          type="text"
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Controller
+          name="first_name"
+          control={control}
+          rules={{ required: 'This is required.' }}
+          render={({ field }) => <Input label="Nombre completo" {...field} />}
         />
-        <span className="cursor-text text-base text-app-grayDark peer-active:text-app-blue peer-active:-top-[25px] peer-focus:-top-[25px] peer-focus:text-xs ease-in-out  peer-focus:text-app-blue absolute whitespace-nowrap transition-all duration-200 -top-[4px] left-4 rounded-3xl bg-white px-1 py-1 outline-none">
-          Título de la publicación
-        </span>
-      </label>
+
+        <div>
+          <ActionButton>Enviar</ActionButton>
+        </div>
+      </form>
     </div>
   );
 };
