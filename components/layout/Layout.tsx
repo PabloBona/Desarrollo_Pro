@@ -1,18 +1,27 @@
+import Head from 'next/head';
 import React from 'react';
-import { Footer } from './footer/Footer';
-import Header from './header/Header';
+import { Footer } from '../navigation/footer/Footer';
+import Header from '../navigation/header/Header';
 
 interface ILayout {
   children: React.ReactNode;
   pageTitle?: string;
 }
 
-export const Layout: React.FC<ILayout> = ({ children }) => {
+export const Layout: React.FC<ILayout> = ({
+  children,
+  pageTitle = 'Para cuando?',
+}) => {
   return (
-    <div className="overflow-x-hidden">
-      <Header />
-      <main className="app-container ">{children}</main>
-      <Footer />
-    </div>
+    <>
+      <Head>
+        <title>{pageTitle}</title>
+      </Head>
+      <div className="overflow-x-hidden">
+        <Header />
+        <main className="app-container ">{children}</main>
+        <Footer />
+      </div>
+    </>
   );
 };

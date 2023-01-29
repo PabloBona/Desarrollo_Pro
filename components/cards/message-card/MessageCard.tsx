@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { mockInterest } from '../../../lib/data/interests.mock';
 import Button from '../../buttons/Button';
 export const MessageCard = () => {
   return (
@@ -25,11 +26,3 @@ export const MessageCard = () => {
     </div>
   );
 };
-
-const mockInterest = [
-  'Restaurantes',
-  'Artistas Mexicanos',
-  'Rock',
-  'Artistas Colombia',
-  'Indie',
-];

@@ -8,7 +8,7 @@ export const ActionButton: FC<IActionButton> = ({
 }) => {
   return (
     <button
-      className={`bg-app-blue text-white rounded-md p-3`}
+      className={`bg-app-blue text-white rounded-md p-3 ${className}`}
       {...buttonProps}
     >
       {children}

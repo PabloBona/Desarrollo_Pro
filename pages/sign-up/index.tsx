@@ -26,7 +26,7 @@ export default function SingUpPage() {
                 type="password"
               />
             </label>
-            <ActionButton>Log in</ActionButton>
+            <ActionButton>Sign Up</ActionButton>
             <span className="text-center app-subtitle-2 pt-2">
               Did you forget your password?
             </span>

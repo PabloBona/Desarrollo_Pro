@@ -3,7 +3,7 @@ import Button from '../components/buttons/Button';
 import { MessageCard } from '../components/cards/message-card/MessageCard';
 import { Layout } from '../components/layout/Layout';
 import { EventSlider } from '../components/sliders/EventSlider/EventSlider';
-import { Event } from '../lib/interfaces/Event.interface';
+import { eventsMock } from '../lib/data/events.mock';
 import { NextPageWithLayout } from './page';
 
 const Home: NextPageWithLayout = () => {
@@ -54,29 +54,3 @@ export default Home;
 Home.getLayout = (page) => {
   return <Layout>{page}</Layout>;
 };
-
-const eventsMock: Event[] = [
-  {
-    title: 'Concierto de Lady Gaga',
-    short_description:
-      'El concierto con la temática de Lady gaga en Las Vegas. El concierto con la temática de Lady gaga en Las Vegas.El concierto con la temática.',
-    votes: 99203,
-    url: 'ladygaga.com',
-    image: '/mock-event-image.png',
-  },
-  {
-    title: 'Tienda de ropa femenina ZARA',
-    short_description:
-      'Tienda de ropa para todos los gustos de grandes y chiquitos',
-    votes: 99203,
-    url: 'ladygaga.com',
-    image: '/mock-event-image.png',
-  },
-  {
-    title: 'Concierto de BTS',
-    short_description: 'Grupo de música coreano',
-    votes: 99203,
-    url: 'ladygaga.com',
-    image: '/mock-event-image.png',
-  },
-];
