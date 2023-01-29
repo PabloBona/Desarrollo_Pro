@@ -18,7 +18,10 @@ const Header = () => {
         </div>
       </div>
       <div className="hidden gap-8 items-center sm:flex ">
-        <Link href={'#'} className={'text-app-blue flex items-center gap-1'}>
+        <Link
+          href={'/create-event'}
+          className={'text-app-blue flex items-center gap-1'}
+        >
           <AiOutlinePlus size={22} /> <p>Crear publicación</p>
         </Link>
         <div className="flex items-center gap-4 ">
