@@ -10,7 +10,7 @@
 
 @layer components {
   .app-container {
-    @apply m-auto container p-4;
+    @apply m-auto container p-4 lg:max-w-6xl;
   }
   .app-title-1 {
     @apply font-black text-5xl leading-[56px] font-Roboto;
@@ -25,16 +25,35 @@
     @apply font-medium text-base leading-7;
   }
   .app-subtitle-2 {
-    @apply font-normal text-base leading-[19px];
+    @apply font-normal text-base leading-[19px] text-app-grayDark;
   }
   .app-text-1 {
-    @apply text-[15px] leading-[18px] font-normal;
+    @apply text-[15px] leading-[18px] font-normal text-app-grayDark;
   }
   .app-text-2 {
     @apply text-sm leading-4 font-normal;
   }
   .app-banner {
     @apply w-screen m-auto relative left-[calc(-50vw_+_50%)];
+  }
+  .text-gradient {
+    background: rgb(255, 255, 255);
+    background: -moz-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 1) 4%,
+      rgba(41, 181, 25, 0) 52%
+    );
+    background: -webkit-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 1) 4%,
+      rgba(41, 181, 25, 0) 52%
+    );
+    background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 1) 4%,
+      rgba(41, 181, 25, 0) 52%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#29b519",GradientType=1);
   }
   /* .app-banner {
     @apply w-screen m-auto relative left-[50%] right-[50%] h-full -ml-[50vw] -mr-[50vw];

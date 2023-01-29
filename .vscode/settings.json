@@ -5,5 +5,12 @@
     "source.fixAll": true,
     "source.organizeImports": true
   },
-  "cSpell.words": ["commitlint", "esnext", "nextjs", "Roboto"]
+  "cSpell.words": [
+    "commitlint",
+    "esnext",
+    "Hagámoslo",
+    "ladygaga",
+    "nextjs",
+    "Roboto"
+  ]
 }
