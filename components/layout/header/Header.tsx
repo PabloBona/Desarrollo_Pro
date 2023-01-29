@@ -7,7 +7,9 @@ const Header = () => {
   return (
     <div className="bg-black text-white flex items-center justify-between px-4 sm:px-12 py-4 min-h-[70px] text-sm">
       <div>
-        <IconLogo />
+        <Link href={'/'}>
+          <IconLogo />
+        </Link>
       </div>
       <div className="block sm:hidden">
         <div className="flex items-center gap-2 text-xs">
@@ -20,8 +22,8 @@ const Header = () => {
           <AiOutlinePlus size={22} /> <p>Crear publicación</p>
         </Link>
         <div className="flex items-center gap-4 ">
-          <Link href={'#'}>Login</Link>
-          <Link href={'#'}>Sign Up</Link>
+          <Link href={'/login'}>Login</Link>
+          <Link href={'/sign-up'}>Sign Up</Link>
         </div>
       </div>
     </div>
