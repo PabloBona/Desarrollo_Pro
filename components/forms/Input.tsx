@@ -1,11 +1,16 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 interface IInput extends React.ComponentPropsWithoutRef<'input'> {
   label: string;
 }
 export const Input: React.FC<IInput> = React.forwardRef(
   ({ label, className, ...inputProps }, _ref) => {
     const refContainer = useRef<any>(null);
-
+    const [hasValue, setHasValue] = useState(null);
+    useEffect(() => {
+      if (refContainer) {
+        setHasValue(refContainer.current.value);
+      }
+    }, [refContainer]);
     return (
       <label className="relative">
         <input
@@ -15,7 +20,8 @@ export const Input: React.FC<IInput> = React.forwardRef(
         />
         <span
           className={`cursor-text text-base text-app-grayDark peer-active:text-app-blue peer-active:-top-[25px] peer-focus:-top-[25px] peer-focus:text-xs ease-in-out  peer-focus:text-app-blue absolute whitespace-nowrap transition-all duration-200 -top-[4px] left-4 rounded-3xl bg-white px-1 py-1 outline-none ${
-            refContainer?.current?.value && '-top-[25px] !text-xs'
+            (hasValue || refContainer?.current?.value) &&
+            '!-top-[25px] !text-xs'
           }`}
         >
           {label}
