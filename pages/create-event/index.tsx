@@ -158,7 +158,7 @@ const CreateEventPage = () => {
           </div>
           <button
             onClick={() => router.back()}
-            className="absolute top-8 left-8 text-app-blue font-medium"
+            className="absolute -top-5 left-4 sm:top-8 sm:left-8 text-app-blue font-medium"
           >
             Back
           </button>
@@ -220,7 +220,7 @@ const CreateEventPage = () => {
           </div>
           <button
             onClick={() => setFormStep((prev) => prev - 1)}
-            className="absolute top-8 left-8 text-app-blue font-medium"
+            className="absolute -top-5 left-4 sm:top-8 sm:left-8 text-app-blue font-medium"
           >
             Back
           </button>
