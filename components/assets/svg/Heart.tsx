@@ -14,11 +14,12 @@ export const Heart: FC<IHeart> = ({ isActive = false, ...svgProps }) => {
       {...svgProps}
     >
       <circle
+        aria-label="circle-heart"
         cx="24.5"
         cy="24.5"
         r="23.5"
         className="transition-all duration-500"
-        fill={isActive ? '#FF64BC' : '#D9D9D9 '}
+        fill={isActive ? '#FF64BC' : '#D9D9D9'}
         stroke="white"
         strokeWidth="2"
       />

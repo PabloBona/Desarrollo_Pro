@@ -52,6 +52,7 @@ export const EventCard: FC<IEventCard> = ({
         </div>
         <div>
           <Heart
+            aria-label="like-button"
             isActive={iActive}
             onClick={() => setIsActive((prev) => !prev)}
             className={

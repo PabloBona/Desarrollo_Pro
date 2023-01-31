@@ -36,7 +36,7 @@ export const EventDetailPage: NextPageWithLayout = () => {
                 <span>1243 votos</span>
               </p>
             </div>
-            {windowSize.width! > 700 && (
+            {windowSize.width && windowSize.width > 700 && (
               <ActionButton className="!rounded-3xl">Votar</ActionButton>
             )}
           </div>
@@ -48,7 +48,7 @@ export const EventDetailPage: NextPageWithLayout = () => {
               height={380}
             />
           </div>
-          {windowSize.width! <= 700 && (
+          {windowSize.width && windowSize.width <= 700 && (
             <ActionButton className="!rounded-3xl">Votar</ActionButton>
           )}
         </div>
