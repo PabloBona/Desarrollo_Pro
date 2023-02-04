@@ -1,4 +1,6 @@
+import Cookies from 'js-cookie';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import Logo from '../../components/assets/logo/Logo';
 import { ActionButton } from '../../components/buttons/ActionButton';
@@ -11,11 +13,13 @@ const LoginPage = () => {
       password: '',
     },
   });
-
+  const router = useRouter();
   const onSubmit = async (data: any) => {
     login(data)
       .then((resp) => {
-        console.log(resp);
+        Cookies.set('token', resp.data.token[0].public);
+        window.location.href = '/profile';
+        // router.push('/profile');
       })
       .catch((error) => {
         console.log(error);

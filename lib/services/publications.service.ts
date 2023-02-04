@@ -1,14 +1,8 @@
 import useSWR from 'swr';
-import { fetcher } from '../helpers/fetcher';
-import { PublicationResponse } from '../interfaces/publications.interface';
-
-const baseURL = 'http://68.183.49.192:8001/api/v1';
+import { fetcher } from '../helpers/fetcher.helper';
 
 function usePublications() {
-  const { data, error, isLoading, mutate } = useSWR<PublicationResponse>(
-    `${baseURL}/publications`,
-    fetcher
-  );
+  const { data, error, isLoading, mutate } = useSWR(`/publications`, fetcher);
   return {
     data,
     error,
