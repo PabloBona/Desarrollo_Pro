@@ -5,9 +5,23 @@ import { MessageCard } from '../components/cards/message-card/MessageCard';
 import { Layout } from '../components/layout/Layout';
 import { EventSlider } from '../components/sliders/EventSlider/EventSlider';
 import { eventsMock } from '../lib/data/events.mock';
+import { usePublications } from '../lib/services/publications.service';
+
 import { NextPageWithLayout } from './page';
 
 const Home: NextPageWithLayout = () => {
+  const { data, error, isLoading, mutate } = usePublications();
+
+  if (error) {
+    return <div>ocurrió un error</div>;
+  }
+
+  if (isLoading) {
+    return <div>cargando...</div>;
+  }
+
+  console.log(data);
+
   return (
     <div>
       {/* HERO SECTION */}
