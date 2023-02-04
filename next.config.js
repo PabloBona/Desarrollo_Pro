@@ -7,6 +7,7 @@ const nextConfig = {
         : 'https://paracuando-team1.academlo.tech/api/v1', // production api
   },
   reactStrictMode: true,
+  
 };
 
 module.exports = nextConfig;
