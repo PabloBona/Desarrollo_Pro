@@ -2,26 +2,32 @@ import Cookies from 'js-cookie';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 import Logo from '../../components/assets/logo/Logo';
 import { ActionButton } from '../../components/buttons/ActionButton';
 import { login } from '../../lib/services/auth.service';
+import { changueStatus } from '../../store/features/ui/uiSlice';
 
 const LoginPage = () => {
+  const dispatch = useDispatch();
+  const router = useRouter();
   const { register, handleSubmit } = useForm({
     defaultValues: {
       email: '',
       password: '',
     },
   });
-  const router = useRouter();
+  // const router = useRouter();
   const onSubmit = async (data: any) => {
     login(data)
       .then((resp) => {
         Cookies.set('token', resp.data.token[0].public);
-        window.location.href = '/profile';
-        // router.push('/profile');
+        dispatch(changueStatus(true));
+        // window.location.href = '/profile';
+        router.push('/profile');
       })
       .catch((error) => {
+        dispatch(changueStatus(false));
         console.log(error);
       });
   };

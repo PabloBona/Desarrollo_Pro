@@ -8,27 +8,34 @@ import { ActionButton } from '../../components/buttons/ActionButton';
 import { Input } from '../../components/forms/Input';
 import { Select } from '../../components/forms/Select';
 import { TextArea } from '../../components/forms/TextArea';
+import { useCategories } from '../../lib/services/categories.services';
+import { createPublication } from '../../lib/services/publications.service';
+import { useTags } from '../../lib/services/tags.services';
 
 const CreateEventPage = () => {
   const [formStep, setFormStep] = useState(0);
   const [currentFile, setCurrentFile] = useState<string | Blob>('');
   const [imageURL, setImageURL] = useState<string>();
+  const { data: tags } = useTags();
+  const { data: categories } = useCategories();
+
   const {
     handleSubmit,
     control,
+    getValues,
     formState: { isValid },
   } = useForm({
     defaultValues: {
-      titulo_publicacion: '',
-      type: '',
-      category: '',
+      title: '',
+      tags: '',
+      publication_type_id: '',
       description: '',
-      reference: '',
+      urlShare: '',
     },
     mode: 'onChange',
   });
   const router = useRouter();
-  const onSubmit = (data: { titulo_publicacion: string }) => {
+  const onSubmit = (data: any) => {
     if (isValid) {
       setFormStep(1);
       console.log(data);
@@ -46,7 +53,14 @@ const CreateEventPage = () => {
 
   const onPublish = () => {
     if (imageURL) {
-      alert('event publish');
+      createPublication(getValues())
+        .then((resp) => {
+          alert('event publish');
+          router.push('/profile');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   };
 
@@ -90,7 +104,7 @@ const CreateEventPage = () => {
               >
                 <div>
                   <Controller
-                    name="titulo_publicacion"
+                    name="title"
                     control={control}
                     rules={{ required: 'This is required.' }}
                     render={({ field }) => (
@@ -101,32 +115,32 @@ const CreateEventPage = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   <div>
                     <Controller
-                      name="type"
+                      name="publication_type_id"
                       control={control}
                       rules={{ required: 'This is required.' }}
                       render={({ field }) => (
                         <Select label="Selecciona el tipo" {...field}>
-                          <option value=""></option>
-                          <option>cat 1</option>
-                          <option>cat 2</option>
-                          <option>cat 3</option>
-                          <option>cat 4</option>
+                          {categories?.map((category) => (
+                            <option key={category.id} value={category.id}>
+                              {category.name}
+                            </option>
+                          ))}
                         </Select>
                       )}
                     />
                   </div>
                   <div>
                     <Controller
-                      name="category"
+                      name="tags"
                       control={control}
                       rules={{ required: 'This is required.' }}
                       render={({ field }) => (
                         <Select label="Selecciona la categoría" {...field}>
-                          <option value=""></option>
-                          <option>cat 1</option>
-                          <option>cat 2</option>
-                          <option>cat 3</option>
-                          <option>cat 4</option>
+                          {tags?.map((tag) => (
+                            <option key={tag.id} value={tag.id}>
+                              {tag.name}
+                            </option>
+                          ))}
                         </Select>
                       )}
                     />
@@ -148,7 +162,7 @@ const CreateEventPage = () => {
                 </div>
                 <div>
                   <Controller
-                    name="reference"
+                    name="urlShare"
                     control={control}
                     rules={{ required: 'This is required.' }}
                     render={({ field }) => (
