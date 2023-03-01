@@ -1,4 +1,5 @@
 import { FC } from 'react';
+
 interface IHeart extends React.ComponentPropsWithoutRef<'svg'> {
   isActive: boolean;
 }
