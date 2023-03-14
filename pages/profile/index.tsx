@@ -1,10 +1,7 @@
-import { useUserMe } from '../../lib/services/user.service';
+import { NextPageWithLayout } from '../page';
 
-const ProfilePage = () => {
-  const { data } = useUserMe();
-  console.log(data);
-
-  return <div>Profile</div>;
+const ProfilePage: NextPageWithLayout = () => {
+  return <div>PROFILE</div>;
 };
 
 export default ProfilePage;

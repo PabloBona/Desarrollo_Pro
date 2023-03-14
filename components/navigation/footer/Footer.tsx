@@ -1,11 +1,3 @@
 export function Footer() {
-  return (
-    <div className='h-[488px] bg-[url("/footer-banner.png")] flex justify-center items-center'>
-      <input
-        className="px-6 py-[15px] w-full sm:w-[465px] rounded-3xl mx-4 text-[13px]"
-        type={'text'}
-        placeholder={'¿Qué quieres ver en tu ciudad?'}
-      />
-    </div>
-  );
+  return <div>FOOTER</div>;
 }

@@ -1,8 +1,14 @@
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import Logo from '../../components/assets/logo/Logo';
-import { ActionButton } from '../../components/buttons/ActionButton';
-import { createUser } from '../../lib/services/auth.service';
+
+type FormValues = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  userName: string;
+  password: string;
+};
 export default function SingUpPage() {
   const { register, handleSubmit } = useForm({
     defaultValues: {
@@ -14,14 +20,16 @@ export default function SingUpPage() {
     },
   });
 
-  const onSubmit = async (data: any) => {
-    createUser(data)
-      .then((resp) => {
-        console.log(resp);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const onSubmit = async (data: FormValues) => {
+    console.log(data);
+
+    // createUser(data)
+    //   .then((resp) => {
+    //     console.log(resp);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   };
 
   return (
@@ -80,7 +88,7 @@ export default function SingUpPage() {
                 {...register('password')}
               />
             </label>
-            <ActionButton>Sign Up</ActionButton>
+            <button>Sign Up</button>
             <span className="text-center app-subtitle-2 pt-2">
               Did you forget your password?
             </span>
