@@ -1,17 +1,13 @@
 import useSWR from 'swr';
 import instance from '../helpers/axios.helper.';
-import { fetcher } from '../helpers/fetcher.helper';
+import { PublicationsResponse } from '../interfaces/publications.interface';
 
 function usePublications(params?: string) {
-  const { data, error, isLoading, mutate } = useSWR(
-    `/publications${params ? `?${params}` : ''}`,
-    fetcher,
-    {
-      shouldRetryOnError: false,
-    }
+  const { data, error, isLoading, mutate } = useSWR<PublicationsResponse>(
+    `/publications${params ? `?${params}` : ''}`
   );
   return {
-    data,
+    data: data?.results,
     error,
     isLoading,
     mutate,

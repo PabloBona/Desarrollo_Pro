@@ -11,6 +11,8 @@ import { NextPageWithLayout } from './page';
 
 const Home: NextPageWithLayout = () => {
   const { data, error, isLoading, mutate } = usePublications();
+  const publications = data?.results || [];
+  console.log(publications);
 
   return (
     <div>
