@@ -1,18 +1,14 @@
 import Link from 'next/link';
 import Logo from '../components/assets/logo/Logo';
-import Button from '../components/buttons/Button';
-import { MessageCard } from '../components/cards/message-card/MessageCard';
 import { Layout } from '../components/layout/Layout';
-import { EventSlider } from '../components/sliders/EventSlider/EventSlider';
-import { eventsMock } from '../lib/data/events.mock';
-import { usePublications } from '../lib/services/publications.service';
+import { useCategories } from '../lib/services/categories.services';
 
 import { NextPageWithLayout } from './page';
 
 const Home: NextPageWithLayout = () => {
-  const { data, error, isLoading, mutate } = usePublications();
-  const publications = data?.results || [];
-  console.log(publications);
+  const { data, error, isLoading } = useCategories();
+
+  console.log({ data, error, isLoading });
 
   return (
     <div>
@@ -29,35 +25,19 @@ const Home: NextPageWithLayout = () => {
           />
           <div className="flex items-center justify-center gap-2">
             <Link href={'/category/marcas-y-tiendas'}>
-              <Button>Marcas y tiendas</Button>
+              <button>Marcas y tiendas</button>
             </Link>
             <Link href={'/category/marcas-y-tiendas'}>
-              <Button>Artistas y conciertos</Button>
+              <button>Artistas y conciertos</button>
             </Link>
             <Link href={'/category/marcas-y-tiendas'}>
-              <Button>Torneos</Button>
+              <button>Torneos</button>
             </Link>
           </div>
         </div>
       </div>
-      {/* SLIDERS SECTION */}
-      <div className="py-12">
-        <EventSlider
-          events={eventsMock}
-          title="Populares en Lima"
-          subtitle="Lo que las personas piden más"
-        />
-      </div>
-      <div className="py-12">
-        <EventSlider
-          events={eventsMock}
-          title="Sugerencias para ti"
-          subtitle="Publicaciones que podrías colaborar"
-        />
-      </div>
-      <div className="py-12">
-        <MessageCard />
-      </div>
+      {/* CONTENIDO */}
+      <div className="bg-red-300 h-[70vh]">CONTENIDO</div>
     </div>
   );
 };

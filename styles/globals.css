@@ -15,24 +15,7 @@
   .app-title-1 {
     @apply font-black text-5xl leading-[56px] font-Roboto;
   }
-  .app-title-2 {
-    @apply font-medium text-2xl leading-7;
-  }
-  .app-title-3 {
-    @apply font-semibold text-xl leading-[23px];
-  }
-  .app-subtitle-1 {
-    @apply font-medium text-base leading-7;
-  }
-  .app-subtitle-2 {
-    @apply font-normal text-base leading-[19px] text-app-grayDark;
-  }
-  .app-text-1 {
-    @apply text-[15px] leading-[18px] font-normal text-app-grayDark;
-  }
-  .app-text-2 {
-    @apply text-sm leading-4 font-normal;
-  }
+
   .app-banner {
     @apply w-screen m-auto relative left-[calc(-50vw_+_50%)];
   }
@@ -55,7 +38,4 @@
     );
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#29b519",GradientType=1);
   }
-  /* .app-banner {
-    @apply w-screen m-auto relative left-[50%] right-[50%] h-full -ml-[50vw] -mr-[50vw];
-  } */
 }

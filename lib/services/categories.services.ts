@@ -1,13 +1,11 @@
 import useSWR from 'swr';
-import { fetcher } from '../helpers/fetcher.helper';
 import { CategoriesResponse } from '../interfaces/categories.interface';
 function useCategories() {
   const { data, error, isLoading, mutate } = useSWR<CategoriesResponse>(
-    '/publications-types',
-    fetcher
+    '/publications-types'
   );
   return {
-    data: data?.results.results,
+    data: data,
     error,
     isLoading,
     mutate,
