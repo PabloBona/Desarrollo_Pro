@@ -27,11 +27,14 @@ const Home: NextPageWithLayout = () => {
             <Link href={'/category/marcas-y-tiendas'}>
               <button>Marcas y tiendas</button>
             </Link>
-            <Link href={'/category/marcas-y-tiendas'}>
+            <Link href={'/category/Artistas y conciertos'}>
               <button>Artistas y conciertos</button>
             </Link>
-            <Link href={'/category/marcas-y-tiendas'}>
+            <Link href={'/category/Torneos'}>
               <button>Torneos</button>
+            </Link>
+            <Link href={'/category/pruebas'}>
+              <button>Pruebas</button>
             </Link>
           </div>
         </div>
