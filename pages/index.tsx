@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Logo from '../components/assets/logo/Logo';
+import { Card } from '../components/card/card';
 import { Layout } from '../components/layout/Layout';
 import { EventSlider } from '../components/sliders/EventSlider/EventSlider';
 import { useCategories } from '../lib/services/categories.services';
@@ -47,6 +48,7 @@ const Home: NextPageWithLayout = () => {
       <div className="bg-red-300 h-[70vh]">
         CONTENIDO
         <EventSlider></EventSlider>
+        <Card></Card>
       </div>
     </div>
   );
