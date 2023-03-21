@@ -12,6 +12,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <>
+      <h1>Hola soy _app.tsx</h1>
       <SWRConfig
         value={{
           shouldRetryOnError: false,
@@ -24,3 +25,5 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
     </>
   );
 }
+//Este component envuelve toda nuestra aplicacion siempre se muestra, es decir se carga para todos los componentes
+//Como se carga para todos los componentes aca tenemos que importar los estilos globales

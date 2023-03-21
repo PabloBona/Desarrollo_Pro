@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Logo from '../components/assets/logo/Logo';
 import { Layout } from '../components/layout/Layout';
+import { EventSlider } from '../components/sliders/EventSlider/EventSlider';
 import { useCategories } from '../lib/services/categories.services';
 
 import { NextPageWithLayout } from './page';
@@ -43,7 +44,10 @@ const Home: NextPageWithLayout = () => {
         </div>
       </div>
       {/* CONTENIDO */}
-      <div className="bg-red-300 h-[70vh]">CONTENIDO</div>
+      <div className="bg-red-300 h-[70vh]">
+        CONTENIDO
+        <EventSlider></EventSlider>
+      </div>
     </div>
   );
 };
@@ -53,3 +57,4 @@ export default Home;
 Home.getLayout = (page) => {
   return <Layout>{page}</Layout>;
 };
+//Aca llamamos al layout que comprende tanto header como footer; y entre medio la page que acabamos de crear

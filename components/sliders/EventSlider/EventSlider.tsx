@@ -6,10 +6,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 interface IEventSlider {
   title?: string;
   subtitle?: string;
-  events: [];
+  events?: [];
 }
 
 export const EventSlider: FC<IEventSlider> = ({ title, subtitle, events }) => {
+  //FC<IEventSlider> esto sirve para decirle que son de type(interface) Eventslider
+  //otra manera es poner ({ title, subtitle, events }:IEventSlider)
   return (
     <div>
       <div className="pb-6">
