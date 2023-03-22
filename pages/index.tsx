@@ -45,10 +45,31 @@ const Home: NextPageWithLayout = () => {
         </div>
       </div>
       {/* CONTENIDO */}
-      <div className="bg-red-300 h-[70vh]">
-        CONTENIDO
-        <EventSlider></EventSlider>
-        <Card></Card>
+      <div className="bg-red-300 h-fit">
+        <EventSlider title='Populares en tu zona' events={[{
+          img:'https://static.onecms.io/wp-content/uploads/sites/6/2020/03/20/game-stop-2000.jpg',
+          title:'GameStop',
+          description:'VideoGames shop',
+          url:'gamestop.com',
+          votes:"1'000'000"
+        },{
+          img:'https://www.arcosdorados.com/wp-content/uploads/2020/10/Espacio-al-Aire-Libre-McDonalds_CCI-scaled.jpg',
+          title:"McDonald's",
+          description:'Fast food restaurant',
+          url:'mcdonalds.com',
+          votes:"2'000'000"
+        }
+        ,{
+          img:'https://assets.entrepreneur.com/content/3x2/2000/1645822504-GettyImages-1370781946.jpg',
+          title:"Burguer King",
+          description:'Fast food restaurant',
+          url:'burguerking.com',
+          votes:"500'000"
+        }
+
+        
+        ]} />
+        <Card/>
       </div>
     </div>
   );

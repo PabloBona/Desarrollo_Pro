@@ -1,3 +1,5 @@
+import LikeButton from "../assets/svg/LikeButton";
+
 export function Card() {
   return (
     <div className="block  mt-5 app-container  mx-auto">
@@ -10,34 +12,7 @@ export function Card() {
           <div className="card flex ">
             <div className="shadow-shadow1 m-1 w-[300px] rounded-[20px] h-[454px] overflow-hidden text-black bg-white border cursor-pointer">
               <div className="mx-[22px] mt-[25px] relative mb-10 h-full">
-                <button className=" ">
-                  <svg
-                    width="49"
-                    height="49"
-                    viewBox="0 0 49 49"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-label="like-button"
-                    className="duration-200 focus:scale-105"
-                  >
-                    <circle
-                      className="duration-300 cursor-pointer"
-                      cx="24.5"
-                      cy="24.5"
-                      r="23.5"
-                      fill="#D9D9D9"
-                      stroke="white"
-                      strokeWidth="2"
-                    ></circle>
-                    <path
-                      d="M18.15 14C14.2013 14 11 17.1565 11 21.0501C11 28.1001 19.45 34.5092 24 36C28.55 34.5092 37 28.1001 37 21.0501C37 17.1565 33.7987 14 29.85 14C27.432 14 25.2935 15.1838 24 16.9956C23.3407 16.0696 22.4648 15.3139 21.4465 14.7925C20.4282 14.271 19.2974 13.9992 18.15 14Z"
-                      stroke="white"
-                      strokeWidth="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    ></path>
-                  </svg>
-                </button>
+                <LikeButton/>
                 <h2 className="title-3 text-start">Tienda de ropa femenina </h2>
                 <div className="h-[70px] overflow-hidden">
                   <p className="mt-[5px] text-1 text-app-grayDark">

@@ -16,6 +16,30 @@
     @apply font-black text-5xl leading-[56px] font-Roboto;
   }
 
+  .app-subtitle-1{
+    @apply  font-medium  text-[16px] leading-[19px]
+  }
+
+  .app-title-2{
+    @apply  font-medium  text-[24px] leading-[28px]
+  }
+
+  .app-subtitle-2{
+    @apply  font-normal  text-[16px] leading-[19px]
+  }
+
+  .app-title-3{
+    @apply  font-semibold  text-[20px] leading-[23px]
+  }
+  
+  .app-texto-1{
+    @apply  font-normal  text-[15px] leading-[18px]
+  }
+  
+  .app-texto-2{
+    @apply  font-medium  text-[14px] leading-[16px]
+  }
+
   .app-banner {
     @apply w-screen m-auto relative left-[calc(-50vw_+_50%)];
   }
@@ -33,9 +57,11 @@
     );
     background: linear-gradient(
       0deg,
-      rgba(255, 255, 255, 1) 4%,
+      #ffffff 4%,
       rgba(41, 181, 25, 0) 52%
     );
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#29b519",GradientType=1);
   }
 }
+
+

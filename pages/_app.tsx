@@ -12,7 +12,6 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <>
-      <h1>Hola soy _app.tsx</h1>
       <SWRConfig
         value={{
           shouldRetryOnError: false,
