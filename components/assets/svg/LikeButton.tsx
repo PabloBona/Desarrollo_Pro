@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-const LikeButton = () => {
+interface ILikeButton {
+  like?:boolean;
+}
+
+const LikeButton: FC<ILikeButton> = ({like}) => {
   return (
-    <button className=" ">
-                  <svg
+
+    <div className=" ">
+    
+<svg
                     width="49"
                     height="49"
                     viewBox="0 0 49 49"
@@ -29,7 +35,10 @@ const LikeButton = () => {
                       stroke-linejoin="round"
                     ></path>
                   </svg>
-                </button>
+      
+     
+
+                </div>
   )
 }
 

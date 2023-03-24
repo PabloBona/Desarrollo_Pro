@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Logo from '../components/assets/logo/Logo';
 import { Card } from '../components/card/card';
+import InterestCard from '../components/InterestCard';
 import { Layout } from '../components/layout/Layout';
 import { EventSlider } from '../components/sliders/EventSlider/EventSlider';
 import { useCategories } from '../lib/services/categories.services';
@@ -27,17 +28,17 @@ const Home: NextPageWithLayout = () => {
           />
           <div className="flex items-center justify-center gap-2 ">
             <Link href={'/category/marcas-y-tiendas'}>
-              <button className="rounded-full bg-white p-1.5 text-sm text-gray-400">
+              <button className="rounded-full bg-white p-1.5 text-sm text-gray-400 pl-3 pr-3">
                 Marcas y tiendas
               </button>
             </Link>
             <Link href={'/category/Artistas y conciertos'}>
-              <button className="rounded-full bg-white p-1.5 text-sm text-gray-400">
+              <button className="rounded-full bg-white p-1.5 text-sm text-gray-400 pl-3 pr-3">
                 Artistas y conciertos
               </button>
             </Link>
             <Link href={'/category/Torneos'}>
-              <button className="rounded-full bg-white p-1.5 text-sm text-gray-400">
+              <button className="rounded-full bg-white p-1.5 text-sm text-gray-400 pl-3 pr-3">
                 Torneos
               </button>
             </Link>
@@ -45,8 +46,10 @@ const Home: NextPageWithLayout = () => {
         </div>
       </div>
       {/* CONTENIDO */}
-      <div className="bg-red-300 h-fit">
-        <EventSlider title='Populares en tu zona' events={[{
+      <div className=" h-fit">
+        <EventSlider title='Populares en tu zona'
+        subtitle='Lo que las personas piden más'
+        events={[{
           img:'https://static.onecms.io/wp-content/uploads/sites/6/2020/03/20/game-stop-2000.jpg',
           title:'GameStop',
           description:'VideoGames shop',
@@ -69,7 +72,57 @@ const Home: NextPageWithLayout = () => {
 
         
         ]} />
-        <Card/>
+        <EventSlider title='Sugerencias para ti'
+        subtitle='Publicaciones que podrias colaborar'
+        events={[{
+          img:'https://static.onecms.io/wp-content/uploads/sites/6/2020/03/20/game-stop-2000.jpg',
+          title:'GameStop',
+          description:'VideoGames shop',
+          url:'gamestop.com',
+          votes:"1'000'000"
+        },{
+          img:'https://www.arcosdorados.com/wp-content/uploads/2020/10/Espacio-al-Aire-Libre-McDonalds_CCI-scaled.jpg',
+          title:"McDonald's",
+          description:'Fast food restaurant',
+          url:'mcdonalds.com',
+          votes:"2'000'000"
+        }
+        ,{
+          img:'https://assets.entrepreneur.com/content/3x2/2000/1645822504-GettyImages-1370781946.jpg',
+          title:"Burguer King",
+          description:'Fast food restaurant',
+          url:'burguerking.com',
+          votes:"500'000"
+        }
+
+        
+        ]} />
+        <InterestCard />
+        <EventSlider title='Recientes'
+        subtitle='Las personas últimanete están hablando de esto'
+        events={[{
+          img:'https://static.onecms.io/wp-content/uploads/sites/6/2020/03/20/game-stop-2000.jpg',
+          title:'GameStop',
+          description:'VideoGames shop',
+          url:'gamestop.com',
+          votes:"1'000'000"
+        },{
+          img:'https://www.arcosdorados.com/wp-content/uploads/2020/10/Espacio-al-Aire-Libre-McDonalds_CCI-scaled.jpg',
+          title:"McDonald's",
+          description:'Fast food restaurant',
+          url:'mcdonalds.com',
+          votes:"2'000'000"
+        }
+        ,{
+          img:'https://assets.entrepreneur.com/content/3x2/2000/1645822504-GettyImages-1370781946.jpg',
+          title:"Burguer King",
+          description:'Fast food restaurant',
+          url:'burguerking.com',
+          votes:"500'000"
+        }
+
+        
+        ]} />
       </div>
     </div>
   );
