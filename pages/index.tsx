@@ -1,17 +1,22 @@
 import Link from 'next/link';
 import Logo from '../components/assets/logo/Logo';
-import { Card } from '../components/card/card';
 import InterestCard from '../components/InterestCard';
 import { Layout } from '../components/layout/Layout';
 import { EventSlider } from '../components/sliders/EventSlider/EventSlider';
-import { useCategories } from '../lib/services/categories.services';
+
 
 import { NextPageWithLayout } from './page';
 
+import { usePublications } from '../lib/services/publication.services';
+import { readFile } from 'fs';
+
+
 const Home: NextPageWithLayout = () => {
-  const { data, error, isLoading } = useCategories();
+  const { data, error, isLoading } = usePublications();
 
   console.log({ data, error, isLoading });
+
+ // const { data,error,isLoading} = usePublications()
 
   return (
     <div>
@@ -27,7 +32,7 @@ const Home: NextPageWithLayout = () => {
             placeholder="¿Qué quieres ver en tu ciudad?"
           />
           <div className="flex items-center justify-center gap-2 ">
-            <Link href={'/category/marcas-y-tiendas'}>
+            <Link href={'/category/Marcas-y-tiendas'}>
               <button className="rounded-full bg-white p-1.5 text-sm text-gray-400 pl-3 pr-3">
                 Marcas y tiendas
               </button>
@@ -54,71 +59,52 @@ const Home: NextPageWithLayout = () => {
           title:'GameStop',
           description:'VideoGames shop',
           url:'gamestop.com',
-          votes:"1'000'000"
+          votes:"1'000'000",
+          id:'0'
         },{
           img:'https://www.arcosdorados.com/wp-content/uploads/2020/10/Espacio-al-Aire-Libre-McDonalds_CCI-scaled.jpg',
           title:"McDonald's",
           description:'Fast food restaurant',
           url:'mcdonalds.com',
-          votes:"2'000'000"
+          votes:"2'000'000",
+          id:'1'
         }
         ,{
           img:'https://assets.entrepreneur.com/content/3x2/2000/1645822504-GettyImages-1370781946.jpg',
           title:"Burguer King",
           description:'Fast food restaurant',
           url:'burguerking.com',
-          votes:"500'000"
-        }
-
-        
-        ]} />
-        <EventSlider title='Sugerencias para ti'
-        subtitle='Publicaciones que podrias colaborar'
-        events={[{
-          img:'https://static.onecms.io/wp-content/uploads/sites/6/2020/03/20/game-stop-2000.jpg',
-          title:'GameStop',
-          description:'VideoGames shop',
-          url:'gamestop.com',
-          votes:"1'000'000"
-        },{
-          img:'https://www.arcosdorados.com/wp-content/uploads/2020/10/Espacio-al-Aire-Libre-McDonalds_CCI-scaled.jpg',
-          title:"McDonald's",
-          description:'Fast food restaurant',
-          url:'mcdonalds.com',
-          votes:"2'000'000"
-        }
-        ,{
-          img:'https://assets.entrepreneur.com/content/3x2/2000/1645822504-GettyImages-1370781946.jpg',
-          title:"Burguer King",
-          description:'Fast food restaurant',
-          url:'burguerking.com',
-          votes:"500'000"
+          votes:"500'000",
+          id:'2'
         }
 
         
         ]} />
         <InterestCard />
         <EventSlider title='Recientes'
-        subtitle='Las personas últimanete están hablando de esto'
+        subtitle='Las personas últimamente están hablando de esto'
         events={[{
           img:'https://static.onecms.io/wp-content/uploads/sites/6/2020/03/20/game-stop-2000.jpg',
           title:'GameStop',
           description:'VideoGames shop',
           url:'gamestop.com',
-          votes:"1'000'000"
+          votes:"1'000'000",
+          id:'0'
         },{
           img:'https://www.arcosdorados.com/wp-content/uploads/2020/10/Espacio-al-Aire-Libre-McDonalds_CCI-scaled.jpg',
           title:"McDonald's",
           description:'Fast food restaurant',
           url:'mcdonalds.com',
-          votes:"2'000'000"
+          votes:"2'000'000",
+          id:'1'
         }
         ,{
           img:'https://assets.entrepreneur.com/content/3x2/2000/1645822504-GettyImages-1370781946.jpg',
           title:"Burguer King",
           description:'Fast food restaurant',
           url:'burguerking.com',
-          votes:"500'000"
+          votes:"500'000",
+          id:'2'
         }
 
         

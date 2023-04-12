@@ -12,6 +12,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
 
   return (
     <>
+   
       <SWRConfig
         value={{
           shouldRetryOnError: false,
