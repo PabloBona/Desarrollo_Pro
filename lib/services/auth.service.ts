@@ -1,9 +1,13 @@
 import axios from '../helpers/axios.helper.';
 
-import { User } from '../interfaces/user.interface';
+import { LoginUser, User } from '../interfaces/user.interface';
 
 function createUser(user: User) {
   return axios.post(`/auth/sign-up`, user);
 }
 
-export { createUser };
+function loginUser(user:LoginUser ) {
+  return axios.post('auth/login',user)
+}
+
+export { createUser,loginUser };

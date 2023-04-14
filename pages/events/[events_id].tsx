@@ -1,56 +1,41 @@
 import { useRouter } from 'next/router';
-import { Layout } from '../../components/layout/Layout';
-import { NextPageWithLayout } from '../page';
+import InterestCard from '../../components/InterestCard';
 import DetailHeader from '../../components/detailPage/DetailHeader';
 import MainCont from '../../components/detailPage/MainCont';
-import InterestCard from '../../components/InterestCard';
+import { Layout } from '../../components/layout/Layout';
 import { EventSlider } from '../../components/sliders/EventSlider/EventSlider';
+import { usePublications } from '../../lib/services/publication.services';
+import { NextPageWithLayout } from '../page';
 
 export const EventPage: NextPageWithLayout = () => {
   const router = useRouter();
-  const  {events_id}  = router.query;
+  const { events_id } = router.query;
 
+  const { data: PublicationsResponse, error, isLoading } = usePublications();
 
-  return <div>
+  let publications = PublicationsResponse?.results;
 
-    <DetailHeader categories={['concierto','artistas']} />
+  const p = publications?.filter((p) => {
+    if (events_id == p.id) {
+      return p
+    }
+  });
 
-    <MainCont title='GameStop' description='VideoGames shop' url='gamestop.com' votes="1'000'000" image='https://static.onecms.io/wp-content/uploads/sites/6/2020/03/20/game-stop-2000.jpg' />
+  return (
+    <div>
+      <DetailHeader categories={['concierto', 'artistas']} />
 
-    <InterestCard />
+      <MainCont publication={p} />
 
-    <EventSlider title='Recientes'
-        subtitle='Las personas últimamente están hablando de esto'
-        events={[{
-          img:'https://static.onecms.io/wp-content/uploads/sites/6/2020/03/20/game-stop-2000.jpg',
-          title:'GameStop',
-          description:'VideoGames shop',
-          url:'gamestop.com',
-          votes:"1'000'000",
-          id:'0'
-        },{
-          img:'https://www.arcosdorados.com/wp-content/uploads/2020/10/Espacio-al-Aire-Libre-McDonalds_CCI-scaled.jpg',
-          title:"McDonald's",
-          description:'Fast food restaurant',
-          url:'mcdonalds.com',
-          votes:"2'000'000",
-          id:'1'
-        }
-        ,{
-          img:'https://assets.entrepreneur.com/content/3x2/2000/1645822504-GettyImages-1370781946.jpg',
-          title:"Burguer King",
-          description:'Fast food restaurant',
-          url:'burguerking.com',
-          votes:"500'000",
-          id:'2'
-        }
+      <InterestCard />
 
-        
-        ]} />
-
-
-    <p>{events_id} este es el id que se podra usar cuando funcion la Api</p>
-  </div>;
+      <EventSlider
+        title="Recientes"
+        subtitle="Las personas últimamente están hablando de esto"
+        events={publications}
+      />
+    </div>
+  );
 };
 
 EventPage.getLayout = (page) => {

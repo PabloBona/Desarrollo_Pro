@@ -1,6 +1,9 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
-
+import { createUser } from '../lib/services/auth.service';
+import Swal from 'sweetalert2';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 type FormValues = {
     firstName: string;
     lastName: string;
@@ -10,85 +13,148 @@ type FormValues = {
   };
 
 const SignupCard = () => {
+
+  const [password, setPassword] = useState(false)
+
+  const router = useRouter()
+
     const { register, handleSubmit } = useForm({
         defaultValues: {
-          firstName: '',
-          lastName: '',
+          first_name: '',
+          last_name: '',
           email: '',
-          userName: '',
           password: '',
         },
       });
 
-      const onSubmit = async () => {
-        
-    
-        // createUser(data)
-        //   .then((resp) => {
-        //     console.log(resp);
-        //   })
-        //   .catch((error) => {
-        //     console.log(error);
-        //   });
+      const onSubmit =  (data:any) => {
+       // setValue('firstName',data.firstName.trim())
+          
+         createUser(data)
+           .then((resp) => {
+
+             router.push('/login')
+            return(
+            Swal.fire({
+              title: 'Cuenta creada exitosamente',
+              width: 400,
+              padding: '1em',
+              color: '#fff',
+              background: 'rgb(0,0,0,0.7)',
+              backdrop: `
+                  rgba(0,0,123,0.4)
+                `,
+            }
+            )
+            )
+
+          })
+           .catch((error) => {
+            
+            if (error.response.data.errors[0]?.message === 'email must be unique') {
+              return(
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'There is already an account with that email',
+                  background: 'rgb(0,0,0,0.7)',
+                  color: '#fff',
+                  width: 400,
+                backdrop: `
+                    rgba(0,0,123,0.4)
+                  `,
+                })
+              )
+            } else{
+             return(
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                background: 'rgb(0,0,0,0.7)',
+                color: '#fff',
+                width: 400,
+              backdrop: `
+                  rgba(0,0,123,0.4)
+                `,
+              })
+             )}
+             
+           });
+           
       };
   return (
-    <div className="px-7 py-9 w-fit bg-[rgb(0,0,0,0.7)] text-white app-title-2 rounded-3xl">
+    <div className="px-7 py-9 w-fit bg-[rgb(0,0,0,0.7)] text-white app-title-2 rounded-3xl  ">
       <h2>Todos votamos :)</h2>
       <p className="py-3 app-texto-1 text-xs">
        Regístrate para ingresar
       </p>
       <div className="grid gap-2">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <label>
-            <h3 className="app-subtitle-1">Email</h3>
+          <div>
+            
+            <label className="app-subtitle-1">Email</label>
             <input
               className="w-full bg-transparent border-app-grayDark border-[1px] rounded-md text-xs h-9 pl-2"
-              type="text"
-              placeholder="ejemplo@gmail.com "
+              type="email"
+              placeholder="ejemplo@gmail.com"
+              required
+              pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
               {...register('email')}
             />
-          </label>
+            
+          </div>
+          
 
           
           <span className='flex gap-2 py-2'>
-          <label >
-            <h3 className="app-subtitle-1 ">Nombre</h3>
+
+          <div >
+            <label className="app-subtitle-1 ">Nombre</label>
             <input
               className="w-full bg-transparent border-app-grayDark border-[1px] rounded-md text-xs h-9 pl-2 "
               type="text"
               placeholder='Raúl'
-              {...register('firstName')}
+              required
+              maxLength={12}
+              {...register('first_name')}
             />
-          </label>
-          <label >
-          <h3 className="app-subtitle-1 ">Apellido</h3>
+          </div>
+          
+          <div >
+          <label className="app-subtitle-1 ">Apellido</label>
             <input
               className="w-full bg-transparent border-app-grayDark border-[1px] rounded-md text-xs h-9 pl-2 "
               type="text"
               placeholder='Pérez'
-              {...register('lastName')}
+              required
+              maxLength={12}
+              {...register('last_name')}
             />
-          </label>
+          </div>
           </span>
-          <label >
-            <h3 className="app-subtitle-1 ">Contraseña</h3>
+          <div>
+            <label className="app-subtitle-1 ">Contraseña</label>
+            <span className='flex gap-1'>
             <input
               className="w-full bg-transparent border-app-grayDark border-[1px] rounded-md text-xs h-9 pl-2 "
-              type="text"
+              type={password?"text" : 'password'}
+              required
               {...register('password')}
             />
-          </label>
-        </form>
-      </div>
+            <span onClick={()=>{setPassword(!password)}} className='hover:cursor-pointer flex items-center bg-app-yellow rounded-md p-1 app-texto-2 text-sm text-app-black'>Mostrar</span>
+            </span>
+          </div>
+          
       <p
         className="text-xs text-app-gray flex justify-center py-2 hover:underline  font-light"
         
       >
         * La contraseña debe tener mayúsculas, minúsculas y números
       </p>
-      <button className="w-full bg-app-yellow rounded-md text-app-black app-texto-2 h-9">
-        Crear cuenta
-      </button>
+      <input type='submit' value='Crear cuenta' className="w-full bg-app-yellow rounded-md text-app-black app-texto-2 h-9"/>
+      </form>
+      </div>
       <a
         className="text-xs font-light text-app-yellow flex justify-center py-2 hover:underline "
         href="/login"

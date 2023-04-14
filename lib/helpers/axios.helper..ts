@@ -1,5 +1,5 @@
 import axios from 'axios';
-// import Cookie from 'js-cookie';
+import Cookie from 'js-cookie';
 import getConfig from 'next/config';
 import Router from 'next/router';
 
@@ -12,7 +12,7 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   async (config) => {
-    const token = await getTokenFromCookie();
+    const token = getTokenFromCookie();
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -29,7 +29,8 @@ instance.interceptors.request.use(
 
 export default instance;
 
-async function getTokenFromCookie() {
-  return null;
-  // return Cookie.get('token');
+export function getTokenFromCookie() {
+ return Cookie.get('token');
 }
+
+

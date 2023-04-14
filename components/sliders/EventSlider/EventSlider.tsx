@@ -8,32 +8,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 interface IEventSlider {
   title?: string;
   subtitle?: string;
-  events: [
-    {
-      img: string;
-      title: string;
-      description: string;
-      url: string;
-      votes: string;
-      id: string;
-    },
-    {
-      img: string;
-      title: string;
-      description: string;
-      url: string;
-      votes: string;
-      id: string;
-    },
-    {
-      img: string;
-      title: string;
-      description: string;
-      url: string;
-      votes: string;
-      id: string;
-    }
-  ];
+  events: Publication[]|undefined;
   like?: boolean;
 }
 
@@ -74,7 +49,7 @@ export const EventSlider: FC<IEventSlider> = ({ title, subtitle, events }) => {
         >
           {events?.map((e) => (
             <SwiperSlide
-              key={e.url}
+              key={e.id}
               className={
                 'bg-white max-w-[300px] min-w-[300px] h-[450px] ml-1 rounded-3xl shadow-app-card relative'
               }
@@ -83,7 +58,7 @@ export const EventSlider: FC<IEventSlider> = ({ title, subtitle, events }) => {
                   
               <img
                 className="rounded-t-3xl h-[201px] w-full"
-                src={e.img}
+                src={e.images?.toString()}
                 alt="Game shop"
                 />
                   </Link>
@@ -100,15 +75,15 @@ export const EventSlider: FC<IEventSlider> = ({ title, subtitle, events }) => {
                   {e.description}
                 </p>
                 <a
-                  href={e.url}
+                  href={e.reference_link}
                   className="text-app-blue app-texto-2 pt-1 pb-1 pl-9 "
                   >
-                  {e.url}
+                  {e.reference_link}
                 </a>
 
                 <div className="flex p-3 pb-9 justify-center">
                   <User_icon />
-                  <p className="app-texto-2 pl-2 pr-2">{e.votes} votes</p>
+                  <p className="app-texto-2 pl-2 pr-2">{e.votes_count} votes</p>
                 </div>
                 </Link>
               </div>
@@ -129,6 +104,7 @@ import { useSwiper } from 'swiper/react';
 import LikeButton from '../../assets/svg/LikeButton';
 import User_icon from '../../assets/svg/User_icon';
 import Link from 'next/link';
+import { Publication } from '../../../lib/interfaces/publications.interface';
 
 interface ISlideNextButton {
   className?: string;

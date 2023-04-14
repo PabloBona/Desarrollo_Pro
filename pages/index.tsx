@@ -1,22 +1,18 @@
 import Link from 'next/link';
-import Logo from '../components/assets/logo/Logo';
 import InterestCard from '../components/InterestCard';
+import Logo from '../components/assets/logo/Logo';
 import { Layout } from '../components/layout/Layout';
 import { EventSlider } from '../components/sliders/EventSlider/EventSlider';
 
-
 import { NextPageWithLayout } from './page';
 
+import SearchButton from '../components/assets/svg/SearchButton';
 import { usePublications } from '../lib/services/publication.services';
-import { readFile } from 'fs';
-
 
 const Home: NextPageWithLayout = () => {
-  const { data, error, isLoading } = usePublications();
+  const { data: PublicationsResponse, error, isLoading } = usePublications();
 
-  console.log({ data, error, isLoading });
-
- // const { data,error,isLoading} = usePublications()
+  let publications = PublicationsResponse;
 
   return (
     <div>
@@ -25,12 +21,18 @@ const Home: NextPageWithLayout = () => {
         <div>
           <Logo />
         </div>
+
         <div className="flex flex-col gap-4">
-          <input
-            className="px-6 py-4 rounded-3xl w-full sm:w-[465px]"
-            type="text"
-            placeholder="¿Qué quieres ver en tu ciudad?"
-          />
+          <span>
+            <input
+              className="px-6 py-4 rounded-l-full w-full sm:w-[465px] "
+              type="text"
+              placeholder="¿Qué quieres ver en tu ciudad?"
+            />
+            <button className="bg-white rounded-r-full pt-4 pb-[22px] pr-6">
+              <SearchButton />
+            </button>
+          </span>
           <div className="flex items-center justify-center gap-2 ">
             <Link href={'/category/Marcas-y-tiendas'}>
               <button className="rounded-full bg-white p-1.5 text-sm text-gray-400 pl-3 pr-3">
@@ -52,63 +54,17 @@ const Home: NextPageWithLayout = () => {
       </div>
       {/* CONTENIDO */}
       <div className=" h-fit">
-        <EventSlider title='Populares en tu zona'
-        subtitle='Lo que las personas piden más'
-        events={[{
-          img:'https://static.onecms.io/wp-content/uploads/sites/6/2020/03/20/game-stop-2000.jpg',
-          title:'GameStop',
-          description:'VideoGames shop',
-          url:'gamestop.com',
-          votes:"1'000'000",
-          id:'0'
-        },{
-          img:'https://www.arcosdorados.com/wp-content/uploads/2020/10/Espacio-al-Aire-Libre-McDonalds_CCI-scaled.jpg',
-          title:"McDonald's",
-          description:'Fast food restaurant',
-          url:'mcdonalds.com',
-          votes:"2'000'000",
-          id:'1'
-        }
-        ,{
-          img:'https://assets.entrepreneur.com/content/3x2/2000/1645822504-GettyImages-1370781946.jpg',
-          title:"Burguer King",
-          description:'Fast food restaurant',
-          url:'burguerking.com',
-          votes:"500'000",
-          id:'2'
-        }
-
-        
-        ]} />
+        <EventSlider
+          title="Populares en tu zona"
+          subtitle="Lo que las personas piden más"
+          events={publications?.results}
+        />
         <InterestCard />
-        <EventSlider title='Recientes'
-        subtitle='Las personas últimamente están hablando de esto'
-        events={[{
-          img:'https://static.onecms.io/wp-content/uploads/sites/6/2020/03/20/game-stop-2000.jpg',
-          title:'GameStop',
-          description:'VideoGames shop',
-          url:'gamestop.com',
-          votes:"1'000'000",
-          id:'0'
-        },{
-          img:'https://www.arcosdorados.com/wp-content/uploads/2020/10/Espacio-al-Aire-Libre-McDonalds_CCI-scaled.jpg',
-          title:"McDonald's",
-          description:'Fast food restaurant',
-          url:'mcdonalds.com',
-          votes:"2'000'000",
-          id:'1'
-        }
-        ,{
-          img:'https://assets.entrepreneur.com/content/3x2/2000/1645822504-GettyImages-1370781946.jpg',
-          title:"Burguer King",
-          description:'Fast food restaurant',
-          url:'burguerking.com',
-          votes:"500'000",
-          id:'2'
-        }
-
-        
-        ]} />
+        <EventSlider
+          title="Recientes"
+          subtitle="Las personas últimamente están hablando de esto"
+          events={publications?.results}
+        />
       </div>
     </div>
   );

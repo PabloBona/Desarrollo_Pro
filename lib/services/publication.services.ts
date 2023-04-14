@@ -1,11 +1,12 @@
 import axios from "../helpers/axios.helper.";
 import useSWR from 'swr';
+import { PublicationsResponse } from "../interfaces/publications.interface";
 
 //get publications
 function usePublications(){
-    const {data,error,isLoading,mutate } = useSWR('/publications')
+    const {data,error,isLoading,mutate } = useSWR<PublicationsResponse>('/publications')
     return{
-        data,
+        data: data?.results,
         error,
         isLoading,
         mutate,
